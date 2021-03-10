@@ -1,10 +1,21 @@
-#[Ukraine.com.ua](https://ukraine.com.ua) DNS Authenticator plugin for Certbot
+# [Ukraine.com.ua](https://ukraine.com.ua) DNS Authenticator plugin for Certbot
 
 The `certbot-dns-ukrainecomua` plugin automates the process of
 completing a `dns-01` challenge by creating, and
 subsequently removing, TXT records using the [Ukraine.com.ua](https://ukraine.com.ua) API.
 
-##Named Arguments
+## Pre-requirements
+
+* Python3, PIP
+* Python3 version of Certbot (python3-certbot)
+
+## Installation
+
+1. Clone the repository
+1. Install the plugin `pip install ./certbot-dns-ukrainecomua`
+1. Verify it is installed `certbot plugins`
+
+## Named Arguments
 
 Argument | Description
 ---------------------------------| -----------------
@@ -12,7 +23,7 @@ Argument | Description
 `--dns-ukrainecomua-propagation-seconds` | The number of seconds to wait for DNS to propagate before asking the ACME server to verify the DNS record. (Default: 180)
 
 
-##Credentials
+## Credentials
 
 Use of this plugin requires a configuration file containing Ukraine.com.ua API
 credentials, obtained at https://adm.tools/user/api/
@@ -41,8 +52,7 @@ including for renewal, and cannot be silenced except by addressing the issue
 (e.g., by using a command like ``chmod 600`` to restrict access to the file).
 
 
-Examples
---------
+## Examples
 
 ```bash
 #To acquire a certificate for example.com
