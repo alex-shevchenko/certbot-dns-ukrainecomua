@@ -72,6 +72,15 @@ class Provider(BaseProvider):
         LOGGER.debug('list_records: %s', records)
         return records
 
+    def _update_record(self, identifier, rtype=None, name=None, content=None):
+        if identifier:
+            try:
+                self._delete_record(identifier)
+            except NonExistError:
+                pass
+
+        return self._create_record(rtype=rtype, name=name, content=content)
+
     # Delete an existing record.
     # If record does not exist, do nothing.
     def _delete_record(self, identifier=None, rtype=None, name=None, content=None):
