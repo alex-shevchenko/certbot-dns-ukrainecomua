@@ -22,8 +22,8 @@ class Provider(BaseProvider):
         dompayload = self._post(
                 '/dns/list/')
 
-        if dompayload and dompayload['list'][self.domain]['id']:
-            self.domain_id = dompayload['list'][self.domain]['id']
+        if dompayload and dompayload['list'][self.domain]['domain_id']:
+            self.domain_id = dompayload['list'][self.domain]['domain_id']
 
 
         if not self.domain_id:
