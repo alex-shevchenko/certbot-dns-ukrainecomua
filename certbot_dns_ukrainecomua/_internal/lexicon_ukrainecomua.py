@@ -22,8 +22,8 @@ class Provider(BaseProvider):
         dompayload = self._post(
                 '/dns/list/')
 
-        if dompayload and dompayload['response']['list'][self.domain]['domain_id']:
-            self.domain_id = dompayload['response']['list'][self.domain]['domain_id']
+        if dompayload and dompayload['list'][self.domain]['domain_id']:
+            self.domain_id = dompayload['list'][self.domain]['domain_id']
 
 
         if not self.domain_id:
@@ -59,13 +59,13 @@ class Provider(BaseProvider):
             '/dns/records_list/', { 'domain_id': self.domain_id }
         )
 
-        LOGGER.debug('list_records: %s', payload['response']['list'])
+        LOGGER.debug('list_records: %s', payload['list'])
         LOGGER.debug('list_records: %s', rtype)
         LOGGER.debug('list_records: %s', name)
         LOGGER.debug('list_records: %s', content)
 
         records = []
-        for record in payload['response']['list']:
+        for record in payload['list']:
             if record['type'] == rtype and record['record'] == self._relative_name(name) and record['data'] == content:
                 records.append(record)
 
